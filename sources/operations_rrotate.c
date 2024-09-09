@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 17:01:17 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/07/02 18:03:44 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/08/11 19:00:31 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void rra(t_stack *stack_a)
 		current->next = stack_a->top;
 		stack_a->top = current;
 	}
-	print_operation("rra");
+	write(1, "rra\n", 4);
 }
 
 void rrb(t_stack *stack_b)
@@ -51,12 +51,12 @@ void rrb(t_stack *stack_b)
 		prev->next = NULL;
 	current->next = stack_b->top;
 	stack_b->top = current;
-	print_operation("rrb");
+	write(1, "rrb\n", 4);
 }
 
 void rrr(t_stack *stack_a, t_stack *stack_b)
 {
 	rra(stack_a);
 	rrb(stack_b);
-	print_operation("rrr");
+	write(1, "rrr\n", 4);
 }

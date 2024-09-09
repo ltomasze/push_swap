@@ -6,7 +6,7 @@
 #    By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/01 12:08:53 by ltomasze          #+#    #+#              #
-#    Updated: 2024/03/15 15:10:19 by ltomasze         ###   ########.fr        #
+#    Updated: 2024/08/11 19:06:39 by ltomasze         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,10 +33,6 @@ $(NAME): $(OBJS)
 # Compile each .c file into a .o file
 %.o: %.c
 	cc $(FLAGS) -c $< -o $@
-
-# Compile test.c
-#test: test.o $(NAME)
-#	gcc $(FLAGS) test.o -lbsd -L. -lft -o test
 
 clean:
 	rm -f $(OBJS)

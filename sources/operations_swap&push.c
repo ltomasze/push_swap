@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 11:13:17 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/07/02 18:07:49 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/08/11 19:02:10 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void sa(t_stack *stack_a)
 		first->value = second->value;
 		second->value = temp;
 	}
-	print_operation("sa");
+	write(1, "sa\n", 3);
 }
 
 void sb(t_stack *stack_b)
@@ -43,7 +43,7 @@ void sb(t_stack *stack_b)
 		first->value = second->value;
 		second->value = temp;
 	}
-	print_operation("sb");
+	write(1, "sb\n", 3);
 }
 
 void	pa(t_stack *stack_a, t_stack *stack_b)
@@ -57,7 +57,7 @@ void	pa(t_stack *stack_a, t_stack *stack_b)
 	stack_a->top = temp;
 	stack_b->size--;
 	stack_a->size++;
-	print_operation("pa");
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack *stack_a, t_stack *stack_b)
@@ -72,5 +72,5 @@ void	pb(t_stack *stack_a, t_stack *stack_b)
 		stack_a->size--;
 		stack_b->size++;
 	}
-	print_operation("pb");
+	write(1, "pb\n", 3);
 }
