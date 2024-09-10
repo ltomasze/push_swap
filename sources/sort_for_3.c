@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 13:03:30 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/07 13:16:20 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/10 15:09:30 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,17 @@ void	sort_3_nbr_on_stack(t_stack **stack)
 	b = node->next->value;
 	c = node->next->next->value;
 	sort_3_nbr(stack, a, b, c);
+}
+
+void	sort_small_stack(t_stack *stack)
+{
+	if (stack->size == 2)
+	{
+		if (stack->top->value < stack->top->next->value)
+		{
+			sa(stack);
+		}
+	}
+	else if (stack->size == 3)
+		sort_3_nbr_on_stack(&stack);
 }

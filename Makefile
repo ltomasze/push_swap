@@ -2,9 +2,9 @@
 NAME = push_swap
 
 # Source files
-SOURCES = sources/operations_rotate.c sources/operations_rrotate.c sources/operations_swap&push.c \
+SOURCES = sources/operations_rotate.c sources/operations_rrotate.c sources/operations_swap_push.c \
 sources/push_swap.c sources/push_swap_utils.c sources/push_swap_utils2.c sources/push_swap_utils3.c \
-sources/sort_for_3.c
+sources/sort_for_3.c sources/sort_for_4_to_10.c sources/sort_for_more.c
 
 # Object files
 OBJECTS = $(SOURCES:.c=.o)
@@ -18,29 +18,26 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 # Target for all
-all: $(LIBFT) $(NAME)
-
-# Target for the final executable
-$(NAME): $(OBJECTS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) $(LIBFT)
+all: $(NAME)
 
 # Rule to build object files
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Rule to build the libft library
-$(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
+# Target for the final executable
+$(NAME): $(OBJECTS)
+	@make -C $(LIBFT_DIR)
+	$(CC) $(CFLAGS) $(OBJECTS) $(LIBFT) -o $(NAME)
 
 # Clean object files
 clean:
 	@rm -f $(OBJECTS)
-	@$(MAKE) -C $(LIBFT_DIR) clean
+	@make -C $(LIBFT_DIR) clean
 	
 # Full clean, including the executable and libft
 fclean: clean
 	@rm -f $(NAME)
-	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@make -C $(LIBFT_DIR) fclean
 
 # Rebuild everything
 re: fclean all

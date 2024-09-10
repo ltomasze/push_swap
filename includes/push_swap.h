@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:37:36 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/07 13:16:01 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:55:32 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ void	split_atoi2_free(char *str, int *nbrs);
 void	initialize_nbrs_array(int argc, char **argv, int **nbrs, int *nbr_nbrs);
 void	sort_3_nbr(t_stack **stack, int a, int b, int c);
 void	sort_3_nbr_on_stack(t_stack **stack);
+void	sort_small_stack(t_stack *stack);
+void	push_min_value_to_b(t_stack *stack_a, t_stack *stack_b);
+void	sort_for_4_to_10(t_stack *stack_a, t_stack *stack_b);
+void	chunk_sort1(t_stack *stack_a, t_stack *stack_b, int size_a);
+void	rotate_stack_b(t_stack *stack_b, int size_b, int rb_count, int rrb_count);
+void	chunk_sort2(t_stack *stack_a, t_stack *stack_b, int size_b);
 int	check_duplicates(int *nbr, int len);
 int	create_new_node_for_top(t_stack *stack, int value);
 int	check_sorted_in_stack(t_stack *stack);
@@ -54,6 +60,9 @@ int	ft_atoi2(const char *nptr);
 int	allocate_memory_for_stacks(t_stack **stack_a, t_stack **stack_b);
 int	fill_nbrs_array(int argc, char **argv, int *nbrs);
 int	initialize_stack(int argc, char **argv, t_stack **stack_a, t_stack **stack_b);
+int	find_index_for_min_value(t_stack *stack);
+int	calcule_group_size_with_sqrt(int size);
+int	count_r(t_node *stack, int nbr);
 long	char_on_int(const char *nptr, int *i);
 #endif
 
