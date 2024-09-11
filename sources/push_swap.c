@@ -6,13 +6,13 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:34:38 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/11 12:20:56 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/11 12:43:17 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	initialize_stack(int argc, char **argv, t_stack **stack_a, t_stack **stack_b)
+int	init_stack(int argc, char **argv, t_stack **stack_a, t_stack **stack_b)
 {
 	int	*nbrs;
 	int	nbr_nbrs;
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 	t_stack	*stack_b;
 	int		len;
 
-	if (initialize_stack(argc, argv, &stack_a, &stack_b) == -1)
+	if (init_stack(argc, argv, &stack_a, &stack_b) == -1)
 		return (-1);
 	if (check_sorted_in_stack(stack_a))
 	{

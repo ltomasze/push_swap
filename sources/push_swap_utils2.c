@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:19:39 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/06 09:50:41 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/11 12:53:08 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,13 +83,13 @@ int	ft_atoi2(const char *nptr)
 
 void	free_split(char **split)
 {
-    int j;
+	int	j;
 
-    j = 0;
-    while (split[j])
-    {
-        free(split[j]);
-        j++;
-    }
-    free(split);
+	j = 0;
+	while (split[j])
+	{
+		free(split[j]);
+		j++;
+	}
+	free(split);
 }

@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:49:02 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/06 09:50:32 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/11 12:41:19 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int	create_new_node_for_top(t_stack *stack, int value)
 	return (0);
 }
 /* function for create new node on the top in stack when we use operation push
-new_node->index = -1 because stack now is not sort and the first index is 0 so new node top have -1*/
+new_node->index = -1 because stack now is not sort and the first index is 0
+so new node top have -1*/
 
 void	index_assigmenent(t_stack *stack)
 {
@@ -79,7 +80,8 @@ void	index_assigmenent(t_stack *stack)
 		current = current->next;
 	}
 }
-/*function for creating number of index node by value from the smallest number, not sort!,
+/*function for creating number of index node by value from the smallest number,
+not sort!,
 when checker find small value then current have high index +1*/
 
 int	check_sorted_in_stack(t_stack *stack)

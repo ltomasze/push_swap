@@ -6,14 +6,14 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 14:36:37 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/03/15 14:58:20 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/11 12:27:13 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <stddef.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <string.h>
+#include <stddef.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -49,4 +49,3 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-

@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 15:01:12 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/11 12:21:15 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/11 12:58:54 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	count_r(t_node *stack, int nbr)
 	return (counter);
 }
 
-void	rotate_stack_b(t_stack *stack_b, int size_b, int rb_count, int rrb_count)
+void	r_stack_b(t_stack *stack_b, int size_b, int rb_count, int rrb_count)
 {
 	if (rb_count <= rrb_count)
 	{
@@ -93,7 +93,7 @@ void	chunk_sort2(t_stack *stack_a, t_stack *stack_b, int size_b)
 			break ;
 		rb_count = count_r(stack_b->top, size_b - 1);
 		rrb_count = size_b - rb_count;
-		rotate_stack_b(stack_b, size_b, rb_count, rrb_count);
+		r_stack_b(stack_b, size_b, rb_count, rrb_count);
 		if (stack_b->top)
 		{
 			pa(stack_a, stack_b);

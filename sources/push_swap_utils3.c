@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 09:40:21 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/10 15:09:38 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/11 13:27:16 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,31 @@
 
 void	split_atoi2_free(char *str, int *nbrs)
 {
-    char **parts_str;
-    int i;
-    int nbr;
+	char	**parts_str;
+	int		i;
+	int		nbr;
 
-    parts_str = ft_split(str, ' ');
-    if (!parts_str)
-        ft_error();
-    i = 0;
-    while (parts_str[i])
-    {
-        nbr = ft_atoi2(parts_str[i]);
-        if (nbr == -1 && (parts_str[i][0] != '-' || ft_atoi2(&parts_str[i][1]) != 0))
-        {
-            free_split(parts_str);
-            ft_error();
-        }
-        nbrs[i++] = nbr;
-    }
-    free_split(parts_str);
+	parts_str = ft_split(str, ' ');
+	if (!parts_str)
+		ft_error();
+	i = 0;
+	while (parts_str[i])
+	{
+		nbr = ft_atoi2(parts_str[i]);
+		if (nbr == -1
+			&& (parts_str[i][0] != '-' || ft_atoi2(&parts_str[i][1]) != 0))
+		{
+			free_split(parts_str);
+			ft_error();
+		}
+		nbrs[i++] = nbr;
+	}
+	free_split(parts_str);
 }
-/*(nbr == -1 && (parts_str[i][0] != '-' || ft_atoi2(&parts_str[i][1]) != 0)) we check is -1 is error
-because if in index 0 == - and index 1 == 0 this error because we have wrong number -0 */
+/*(nbr == -1 && (parts_str[i][0] != '-' || ft_atoi2(&parts_str[i][1]) != 0))
+ we check is -1 is error
+because if in index 0 == - and index 1 == 0 
+this error because we have wrong number -0 */
 
 int	allocate_memory_for_stacks(t_stack **stack_a, t_stack **stack_b)
 {
@@ -49,7 +52,8 @@ int	allocate_memory_for_stacks(t_stack **stack_a, t_stack **stack_b)
 	(*stack_b)->size = 0;
 	return (0);
 }
-/* we have top for null anf size for 0, because we prepare memory fo stack A and B but for the start we have empty stack*/
+/* we have top for null anf size for 0, because we prepare memory
+ for stack A and B but for the start we have empty stack*/
 
 void	free_stack(t_stack *stack)
 {
