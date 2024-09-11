@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 14:59:01 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/10 15:09:21 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/11 12:17:07 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	push_min_value_to_b(t_stack *stack_a, t_stack *stack_b)
 	pb(stack_a, stack_b);
 }
 
-void	sort_for_4_to_10(t_stack *stack_a, t_stack *stack_b)
+void	sort_for_4_to_9(t_stack *stack_a, t_stack *stack_b)
 {
 	while (stack_a->size > 3)
 		push_min_value_to_b(stack_a, stack_b);

@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 11:34:38 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/10 15:09:50 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/11 12:20:56 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,32 @@ int	initialize_stack(int argc, char **argv, t_stack **stack_a, t_stack **stack_b
 }
 /*nbr_nbrs number how many we have numbers in array
 i = nbr_nbrs - 1 because when we have 5 nbr, we have i == 0 ...  i == 4*/
+
+int	main(int argc, char **argv)
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	int		len;
+
+	if (initialize_stack(argc, argv, &stack_a, &stack_b) == -1)
+		return (-1);
+	if (check_sorted_in_stack(stack_a))
+	{
+		free_stack(stack_a);
+		free_stack(stack_b);
+		return (0);
+	}
+	len = stack_a->size;
+	if (stack_a->size == 3)
+		sort_small_stack(stack_a);
+	else if (stack_a->size < 10)
+		sort_for_4_to_9(stack_a, stack_b);
+	else
+	{
+		chunk_sort1(stack_a, stack_b, len);
+		chunk_sort2(stack_a, stack_b, len);
+	}
+	free_stack(stack_a);
+	free_stack(stack_b);
+	return (0);
+}

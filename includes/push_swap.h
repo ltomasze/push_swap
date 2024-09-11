@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:37:36 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/10 17:55:32 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/11 12:17:26 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	sort_3_nbr(t_stack **stack, int a, int b, int c);
 void	sort_3_nbr_on_stack(t_stack **stack);
 void	sort_small_stack(t_stack *stack);
 void	push_min_value_to_b(t_stack *stack_a, t_stack *stack_b);
-void	sort_for_4_to_10(t_stack *stack_a, t_stack *stack_b);
+void	sort_for_4_to_9(t_stack *stack_a, t_stack *stack_b);
 void	chunk_sort1(t_stack *stack_a, t_stack *stack_b, int size_a);
 void	rotate_stack_b(t_stack *stack_b, int size_b, int rb_count, int rrb_count);
 void	chunk_sort2(t_stack *stack_a, t_stack *stack_b, int size_b);
