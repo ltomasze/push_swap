@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:37:36 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/12 10:22:18 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:32:16 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include "../libft/libft.h"
 # include <unistd.h>
 # include <limits.h>
+
+# include <stdio.h>
 
 typedef struct s_node
 {
@@ -42,7 +44,7 @@ void	rrr(t_stack *stack_a, t_stack *stack_b);
 void	ft_error(void);
 void	index_assigmenent(t_stack *stack);
 void	free_split(char **split);
-void	split_atoi2_free(char *str, int *nbrs);
+void	split_atol_free(char *str, int *nbrs);
 void	initialize_nbrs_array(int argc, char **argv, int **nbrs, int *nbr_nbrs);
 void	sort_3_nbr(t_stack **stack, int a, int b, int c);
 void	sort_3_nbr_on_stack(t_stack **stack);
@@ -57,12 +59,13 @@ int		check_duplicates(int *nbr, int len);
 int		create_new_node_for_top(t_stack *stack, int value);
 int		check_sorted_in_stack(t_stack *stack);
 int		ft_word_count2(char const *str, char c);
-int		ft_atoi2(const char *nptr);
 int		allocate_memory_for_stacks(t_stack **stack_a, t_stack **stack_b);
 int		fill_nbrs_array(int argc, char **argv, int *nbrs);
 int		init_stack(int argc, char **argv, t_stack **stack_a, t_stack **stack_b);
 int		find_index_for_min_value(t_stack *stack);
 int		calcule_group_size_with_sqrt(int size);
 int		count_r(t_node *stack, int nbr);
-long	char_on_int(const char *nptr, int *i);
+long	ft_atol(char *str);
+int		ft_check_int_range(long num);
+void	check_number(char **parts_str, int *nbrs, int i);
 #endif

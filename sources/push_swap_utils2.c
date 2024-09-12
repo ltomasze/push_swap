@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:19:39 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/11 12:53:08 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:31:38 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,52 +34,30 @@ int	ft_word_count2(char const *str, char c)
 }
 /* c is separator, in_nbr is flag*/
 
-void	ft_atoi_error_check(long res, int sign)
+long	ft_atol(char *str)
 {
-	if ((sign == 1 && res > INT_MAX) || (sign == -1 && res > (long)INT_MAX + 1))
-		ft_error();
-}
-/*check if number in string is higher than intmax or lower than intmin
-(long)INT_MAX + 1 this type casting, because INT_MAX + 1 is beyond int*/
-
-long	char_on_int(const char *nptr, int *i)
-{
-	long	res;
-
-	res = 0;
-	while (nptr[*i] && nptr[*i] >= '0' && nptr[*i] <= '9')
-	{
-		res = res * 10 + (nptr[*i] - '0');
-		(*i)++;
-	}
-	return (res);
-}
-
-int	ft_atoi2(const char *nptr)
-{
+	long	num;
 	int		i;
 	int		sign;
-	long	res;
 
 	i = 0;
+	num = 0;
 	sign = 1;
-	while (nptr[i] == ' ' || (nptr[i] >= '\t' && nptr[i] <= '\r'))
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
-	if (nptr[i] == '+' || nptr[i] == '-')
+	if (str[i] == '+' || str[i] == '-')
 	{
-		if (nptr[i] == '-')
+		if (str[i] == '-')
 			sign = -1;
 		i++;
 	}
-	if (nptr[i] < '0' || nptr[i] > '9')
-		ft_error();
-	res = char_on_int(nptr, &i);
-	ft_atoi_error_check(res, sign);
-	if (nptr[i] != '\0')
-		ft_error();
-	return ((int)(res * sign));
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = num * 10 + str[i] - '0';
+		i++;
+	}
+	return (num * sign);
 }
-/*return ((int)(res * sign)); because we need int so we need type casting*/
 
 void	free_split(char **split)
 {
@@ -93,3 +71,64 @@ void	free_split(char **split)
 	}
 	free(split);
 }
+
+int	ft_check_int_range(long num)
+{
+	if (num < INT_MIN || num > INT_MAX)
+		return (EXIT_FAILURE);
+	return (EXIT_SUCCESS);
+}
+
+void	check_number(char **parts_str, int *nbrs, int i)
+{
+	long	nbr;
+
+	nbr = ft_atol(parts_str[i]);
+	if (ft_check_int_range(nbr) == EXIT_FAILURE)
+	{
+		free_split(parts_str);
+		free(nbrs);
+		ft_error();
+	}
+	if (nbr == -1 && (parts_str[i][0] != '-' || ft_atol(&parts_str[i][1]) != 0))
+	{
+		free_split(parts_str);
+		free(nbrs);
+		ft_error();
+	}
+	nbrs[i] = nbr;
+}
+/*
+void	split_atol_free(char *str, int *nbrs)
+{
+	char	**parts_str;
+	int		i;
+	long	nbr;
+
+	parts_str = ft_split(str, ' ');
+	if (!parts_str)
+		ft_error();
+	i = 0;
+	while (parts_str[i])
+	{
+		nbr = ft_atol(parts_str[i]);
+		if (ft_check_int_range(nbr) == EXIT_FAILURE)
+		{
+			free_split(parts_str);
+			free(nbrs);
+			ft_error();
+		}
+		if (nbr == -1
+			&& (parts_str[i][0] != '-' || ft_atol(&parts_str[i][1]) != 0))
+		{
+			free_split(parts_str);
+			ft_error();
+		}
+		nbrs[i++] = nbr;
+	}
+	free_split(parts_str);
+}*/
+/*(nbr == -1 && (parts_str[i][0] != '-' || ft_atoi2(&parts_str[i][1]) != 0))
+ we check is -1 is error
+because if in index 0 == - and index 1 == 0 
+this error because we have wrong number -0 */

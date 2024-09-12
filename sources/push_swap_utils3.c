@@ -6,17 +6,16 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 09:40:21 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/12 10:38:48 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/12 17:33:06 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	split_atoi2_free(char *str, int *nbrs)
+void	split_atol_free(char *str, int *nbrs)
 {
 	char	**parts_str;
 	int		i;
-	int		nbr;
 
 	parts_str = ft_split(str, ' ');
 	if (!parts_str)
@@ -24,21 +23,11 @@ void	split_atoi2_free(char *str, int *nbrs)
 	i = 0;
 	while (parts_str[i])
 	{
-		nbr = ft_atoi2(parts_str[i]);
-		if (nbr == -1
-			&& (parts_str[i][0] != '-' || ft_atoi2(&parts_str[i][1]) != 0))
-		{
-			free_split(parts_str);
-			ft_error();
-		}
-		nbrs[i++] = nbr;
+		check_number(parts_str, nbrs, i);
+		i++;
 	}
 	free_split(parts_str);
 }
-/*(nbr == -1 && (parts_str[i][0] != '-' || ft_atoi2(&parts_str[i][1]) != 0))
- we check is -1 is error
-because if in index 0 == - and index 1 == 0 
-this error because we have wrong number -0 */
 
 int	allocate_memory_for_stacks(t_stack **stack_a, t_stack **stack_b)
 {
@@ -73,24 +62,24 @@ void	free_stack(t_stack *stack)
 int	fill_nbrs_array(int argc, char **argv, int *nbrs)
 {
 	int		i;
-	int		nbr;
+	long	nbr;
 
 	i = 0;
 	if (argc > 2)
 	{
 		while (i < argc - 1)
 		{
-			nbr = ft_atoi2(argv[i + 1]);
+			nbr = (int)ft_atol(argv[i + 1]);
 			if (nbr == -1 && argv[i + 1][0] != '-')
 				ft_error();
-			else if (nbr == -1 && ft_atoi2(&argv[i + 1][1]) != 0)
+			else if (nbr == -1 && (int)ft_atol(&argv[i + 1][1]) != 0)
 				ft_error();
 			nbrs[i] = nbr;
 			i++;
 		}
 	}
 	else if (argc == 2)
-		split_atoi2_free(argv[1], nbrs);
+		split_atol_free(argv[1], nbrs);
 	else
 		ft_error();
 	return (0);
@@ -102,9 +91,9 @@ void	initialize_nbrs_array(int argc, char **argv, int **nbrs, int *nbr_nbrs)
 		*nbr_nbrs = ft_word_count2(argv[1], ' ');
 	else
 		*nbr_nbrs = argc - 1;
-	if (*nbr_nbrs == 0)
+	if (argc == 1)
 		ft_error();
-	*nbrs = (int *)malloc(*nbr_nbrs * sizeof(int));
+	*nbrs = (int *)malloc((*nbr_nbrs) * sizeof(int));
 	if (!(*nbrs))
 		ft_error();
 	if (fill_nbrs_array(argc, argv, *nbrs) == -1)
