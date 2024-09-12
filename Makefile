@@ -11,7 +11,7 @@ OBJECTS = $(SOURCES:.c=.o)
 
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -Iincludes
+CFLAGS = -Wall -Werror -Wextra -Iincludes -g
 
 # Paths
 LIBFT_DIR = libft

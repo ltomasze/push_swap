@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:37:36 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/11 13:41:48 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/12 10:22:18 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	sort_for_4_to_9(t_stack *stack_a, t_stack *stack_b);
 void	chunk_sort1(t_stack *stack_a, t_stack *stack_b, int size_a);
 void	r_stack_b(t_stack *stack_b, int size_b, int rb_count, int rrb_count);
 void	chunk_sort2(t_stack *stack_a, t_stack *stack_b, int size_b);
+void	free_stack(t_stack *stack);
 int		check_duplicates(int *nbr, int len);
 int		create_new_node_for_top(t_stack *stack, int value);
 int		check_sorted_in_stack(t_stack *stack);

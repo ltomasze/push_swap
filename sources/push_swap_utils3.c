@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 09:40:21 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/11 13:27:16 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/12 10:38:48 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,10 @@ void	initialize_nbrs_array(int argc, char **argv, int **nbrs, int *nbr_nbrs)
 		*nbr_nbrs = ft_word_count2(argv[1], ' ');
 	else
 		*nbr_nbrs = argc - 1;
+	if (*nbr_nbrs == 0)
+		ft_error();
 	*nbrs = (int *)malloc(*nbr_nbrs * sizeof(int));
-	if (*nbrs == NULL)
+	if (!(*nbrs))
 		ft_error();
 	if (fill_nbrs_array(argc, argv, *nbrs) == -1)
 	{
