@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/28 12:37:36 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/12 17:32:16 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:04:29 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ int		calcule_group_size_with_sqrt(int size);
 int		count_r(t_node *stack, int nbr);
 long	ft_atol(char *str);
 int		ft_check_int_range(long num);
-void	check_number(char **parts_str, int *nbrs, int i);
+void	check_number_in_str(char **parts_str, int *nbrs, int i);
+int		ft_check_forbidden_char(char *str);
 #endif

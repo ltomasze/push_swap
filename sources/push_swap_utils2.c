@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:19:39 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/12 17:31:38 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/17 13:36:50 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,22 +75,16 @@ void	free_split(char **split)
 int	ft_check_int_range(long num)
 {
 	if (num < INT_MIN || num > INT_MAX)
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+		return (0);
+	return (1);
 }
 
-void	check_number(char **parts_str, int *nbrs, int i)
+void	check_number_in_str(char **parts_str, int *nbrs, int i)
 {
 	long	nbr;
 
 	nbr = ft_atol(parts_str[i]);
-	if (ft_check_int_range(nbr) == EXIT_FAILURE)
-	{
-		free_split(parts_str);
-		free(nbrs);
-		ft_error();
-	}
-	if (nbr == -1 && (parts_str[i][0] != '-' || ft_atol(&parts_str[i][1]) != 0))
+	if (ft_check_int_range(nbr) == 1)
 	{
 		free_split(parts_str);
 		free(nbrs);

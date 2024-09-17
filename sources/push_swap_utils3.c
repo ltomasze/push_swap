@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 09:40:21 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/12 17:33:06 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/17 15:03:50 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	split_atol_free(char *str, int *nbrs)
 	i = 0;
 	while (parts_str[i])
 	{
-		check_number(parts_str, nbrs, i);
+		check_number_in_str(parts_str, nbrs, i);
 		i++;
 	}
 	free_split(parts_str);
@@ -59,6 +59,22 @@ void	free_stack(t_stack *stack)
 	free(stack);
 }
 
+int	ft_check_forbidden_char(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
+	{
+		if (!(str[i] >= '0' && str[i] <= '9'))
+			return (EXIT_FAILURE);
+		i++;
+	}
+	return (EXIT_SUCCESS);
+}
+
 int	fill_nbrs_array(int argc, char **argv, int *nbrs)
 {
 	int		i;
@@ -69,10 +85,12 @@ int	fill_nbrs_array(int argc, char **argv, int *nbrs)
 	{
 		while (i < argc - 1)
 		{
-			nbr = (int)ft_atol(argv[i + 1]);
-			if (nbr == -1 && argv[i + 1][0] != '-')
+			if (ft_check_forbidden_char(argv[i]) == EXIT_FAILURE)
 				ft_error();
-			else if (nbr == -1 && (int)ft_atol(&argv[i + 1][1]) != 0)
+			nbr = (int)ft_atol(argv[i + 1]);
+			if (ft_check_int_range(nbr) == 0)
+				ft_error();
+			if (nbr == -1 && argv[i + 1][0] != '-')
 				ft_error();
 			nbrs[i] = nbr;
 			i++;
@@ -83,27 +101,4 @@ int	fill_nbrs_array(int argc, char **argv, int *nbrs)
 	else
 		ft_error();
 	return (0);
-}
-
-void	initialize_nbrs_array(int argc, char **argv, int **nbrs, int *nbr_nbrs)
-{
-	if (argc == 2)
-		*nbr_nbrs = ft_word_count2(argv[1], ' ');
-	else
-		*nbr_nbrs = argc - 1;
-	if (argc == 1)
-		ft_error();
-	*nbrs = (int *)malloc((*nbr_nbrs) * sizeof(int));
-	if (!(*nbrs))
-		ft_error();
-	if (fill_nbrs_array(argc, argv, *nbrs) == -1)
-	{
-		free(*nbrs);
-		ft_error();
-	}
-	if (check_duplicates(*nbrs, *nbr_nbrs))
-	{
-		free(*nbrs);
-		ft_error();
-	}
 }
