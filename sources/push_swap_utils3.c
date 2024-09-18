@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 09:40:21 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/17 16:40:08 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/18 12:25:22 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,12 @@ int	fill_nbrs_array(int argc, char **argv, int *nbrs)
 		{
 			if (ft_check_forbidden_char(argv[i + 1]) == EXIT_FAILURE)
 				ft_error();
-			nbr = (int)ft_atol(argv[i + 1]);
-			if (ft_check_int_range(nbr) == 0)
+			nbr = ft_atol(argv[i + 1]);
+			if (ft_check_int_range(nbr) == EXIT_FAILURE)
 				ft_error();
 			if (nbr == -1 && argv[i + 1][0] != '-')
 				ft_error();
-			nbrs[i] = nbr;
+			nbrs[i] = (int)nbr;
 			i++;
 		}
 	}

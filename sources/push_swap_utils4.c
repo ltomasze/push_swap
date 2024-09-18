@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 14:57:44 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/17 15:01:58 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/18 11:46:46 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	initialize_nbrs_array(int argc, char **argv, int **nbrs, int *nbr_nbrs)
 	else
 		*nbr_nbrs = argc - 1;
 	if (argc == 1)
-		ft_error();
+		exit(1);
 	*nbrs = (int *)malloc((*nbr_nbrs) * sizeof(int));
 	if (!(*nbrs))
 		ft_error();
