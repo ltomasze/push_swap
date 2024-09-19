@@ -6,7 +6,7 @@
 /*   By: ltomasze <ltomasze@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 09:19:39 by ltomasze          #+#    #+#             */
-/*   Updated: 2024/09/18 11:50:56 by ltomasze         ###   ########.fr       */
+/*   Updated: 2024/09/19 10:48:36 by ltomasze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	check_number_in_str(char **parts_str, int *nbrs, int i)
 	long	nbr;
 
 	nbr = ft_atol(parts_str[i]);
-	if (ft_check_int_range(nbr) == 1)
+	if (ft_check_int_range(nbr) == EXIT_FAILURE)
 	{
 		free_split(parts_str);
 		free(nbrs);
